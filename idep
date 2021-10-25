@@ -1,0 +1,18 @@
+#!/bin/sh
+# $1 ping host
+# $2 sleep time
+# $3 command
+
+while :
+do
+  ping -c 1 "$1"
+  rc=$?
+  if [ $rc -eq 0 ]
+  then
+    break
+  else
+    sleep "$2"
+  fi
+done
+
+eval "$3"
